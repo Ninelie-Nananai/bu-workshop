@@ -6,9 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // builder.Services.AddDbContext<PlayerDBContext>(x => x.UseSqlite("Data Source=workshop.db"));
-ิvar SQLConn = builder.Configuration.GetConnectionString("SQLServer");
+var SQLConn = builder.Configuration.GetConnectionString("SQLServer");
 
-builder.Services.AddDbContext<PlayerDBContext>(x => x.UseSqlServer("Data Source=workshop.db"));
+builder.Services.AddDbContext<PlayerDBContext>(x => x.UseSqlServer(SQLConn));
 builder.Services.AddTransient<IPlayer, SqlitePlayer>();
 
 builder.Services.AddControllers();
